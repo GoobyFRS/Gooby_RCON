@@ -281,7 +281,7 @@ class GoobyRCON(tk.Tk):
 
     def __init__(self):
         super().__init__()
-        self.title("Gooby RCON — Minecraft Server Console")
+        self.title(f"Gooby RCON — v{BUILDID}")
         self.geometry("900x600")
         self.minsize(700, 450)
         self.configure(bg=MC_BG)
