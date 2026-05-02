@@ -1,3 +1,6 @@
+# Custom Ignore
+gooby_rcon_settings.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
