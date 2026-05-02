@@ -19,6 +19,7 @@ from datetime import datetime
 from pathlib import Path
 
 LOG_FILE = "gooby_rcon.log"
+BUILDID = str("0.9.0")
 
 logging.basicConfig(
     level=logging.DEBUG,

@@ -2,12 +2,20 @@
 
 Modern Minecraft RCON Client by the Gooby
 
-## Code Quality
+**Current Version:** 0.9.0
 
-- Python3 with strict PEP8 compliance.
+**Build Date:** 2026.05.02
 
-### Primary Feature
+## Project Setup
 
-- Send and Receive data to a Minecraft Server RCON port.
+```pwsh
+python -m venv venv
+venv\Scripts\activate
+deactivate
+```
 
-### Secondary Features
+Execute the following code block to build a PyInstaller .EXE
+
+```pwsh
+pyinstaller --onefile --windowed --name Gooby_RCON app.py
+```
