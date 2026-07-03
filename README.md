@@ -19,3 +19,5 @@ Execute the following code block to build a PyInstaller .EXE
 ```pwsh
 pyinstaller --onefile --windowed --name Gooby_RCON app.py
 ```
+
+![Demo](gooby_rcon.webp)
