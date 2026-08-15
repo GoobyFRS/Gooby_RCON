@@ -18,9 +18,10 @@ BUILDID = str("0.9.4")
 WIKI_LINK = str("https://github.com/GoobyFRS/Gooby_RCON/wiki")
 ISSUES_LINK = str("https://github.com/GoobyFRS/Gooby_RCON/issues")
 APP_ROOT = Path(sys.executable).resolve().parent if getattr(sys, "frozen", False) else Path(__file__).resolve().parent
+ASSET_DIR = Path(getattr(sys, "_MEIPASS", APP_ROOT)) / "assets" if getattr(sys, "frozen", False) else APP_ROOT / "assets"
 LOG_FILE = APP_ROOT / "gooby_rcon.log"
 SETTINGS_FILE = APP_ROOT / "gooby_rcon_settings.json"
-ICON_FILE = APP_ROOT / "icon.ico"
+ICON_FILE = ASSET_DIR / "icon.ico"
 
 
 def setup_logging() -> logging.Logger:

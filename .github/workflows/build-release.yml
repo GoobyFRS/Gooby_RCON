@@ -31,7 +31,20 @@ jobs:
       - name: Read app version
         shell: pwsh
         run: |
-          $version = python -c "import re, pathlib; text = pathlib.Path('app.py').read_text(encoding='utf-8'); m = re.search(r'BUILDID\s*=\s*str\((?:\"|\')([^\"\']+)(?:\"|\')\)', text); print(m.group(1) if m else '')"
+          $version = python -c 'import ast, pathlib
+          source = pathlib.Path("app.py").read_text(encoding="utf-8")
+          tree = ast.parse(source)
+          version = ""
+          for node in tree.body:
+              if isinstance(node, ast.Assign):
+                  for target in node.targets:
+                      if isinstance(target, ast.Name) and target.id == "BUILDID":
+                          if isinstance(node.value, ast.Constant):
+                              version = str(node.value.value)
+                          elif isinstance(node.value, ast.Call) and isinstance(node.value.func, ast.Name) and node.value.func.id == "str" and node.value.args and isinstance(node.value.args[0], ast.Constant):
+                              version = str(node.value.args[0].value)
+                          break
+          print(version)'
           if (-not $version) {
             throw "Could not determine app version from app.py"
           }
@@ -40,7 +53,7 @@ jobs:
       - name: Build Gooby RCON EXE
         shell: pwsh
         run: |
-          python -m PyInstaller --onefile --windowed --name Gooby_RCON app.py
+          python -m PyInstaller --onefile --windowed --name Gooby_RCON --icon assets/icon.ico --add-data "assets/icon.ico;assets" app.py
 
       - name: Create GitHub Release
         if: success()

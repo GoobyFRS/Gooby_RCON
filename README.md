@@ -22,4 +22,4 @@ venv\Scripts\python -m PyInstaller --onefile --windowed --name Gooby_RCON --icon
 
 If PyInstaller fails with `WinError 5` or `Access is denied`, close any running `Gooby_RCON.exe` and delete the existing file in the `dist` folder before rebuilding.
 
-![Demo](gooby_rcon.webp)
+![Demo](assets/gooby_rcon.webp)
